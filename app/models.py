@@ -18,6 +18,7 @@ class Product(models.Model):
 class Customer(models.Model):
     name = models.CharField(max_length=30, null=True, blank=True)
     purchases = models.ForeignKey(Product, on_delete=models.CASCADE)
+    data = models.DateField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name

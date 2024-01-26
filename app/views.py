@@ -136,3 +136,8 @@ class CustomerSwagger(viewsets.ModelViewSet):
         else:
             status_code = status.HTTP_400_BAD_REQUEST
             return Response({"message": "Product data Not found", "status": status_code})
+        
+    def get_date(self, request, date_t):
+        cus = Customer.objects.filter(date=date_t)
+        seria = CustomerSerializer(cus, many=True)
+        return Response(seria.data)
